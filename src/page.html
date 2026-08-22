@@ -1,0 +1,2026 @@
+<title>AI 革命真正的戰場</title>
+<style>
+  /* ============ tokens : 大理石 · 黑繪陶 · 愛琴藍 · 青銅 ============ */
+  :root {
+    --marble: #e7e6e0; /* 潘泰利孔大理石，冷灰 */
+    --slab: #f1f0eb; /* 碑面 */
+    --sunk: #deddd6;
+    --ink: #17161c; /* 黑繪陶釉 */
+    --muted: #55535e;
+    --faint: #5f5d67;
+    --aegean: #2b4463; /* 愛琴藍 — τέχνη 側、影子 */
+    --aegean-soft: #dde2ea;
+    --bronze: #705523; /* 青銅 — φρόνησις 側、火光 */
+    --bronze-oi: #d8b06a; /* #coda 反轉區：淺金 on 深底 */
+    --dim-oi: #a6a39d;
+    --bronze-soft: #ebe4d3;
+    --rule: #c8c6be;
+    --hair: #d9d7d0;
+    --serif:
+      "Calibri", "Arial", "Helvetica Neue", Helvetica, "Microsoft JhengHei",
+      "微軟正黑體", "Microsoft YaHei", "微软雅黑", "PingFang TC", sans-serif;
+    --sans:
+      "Calibri", "Arial", "Helvetica Neue", Helvetica, "Microsoft JhengHei",
+      "微軟正黑體", "Microsoft YaHei", "微软雅黑", "PingFang TC", sans-serif;
+    --class:
+      "Calibri", "Arial", "Helvetica Neue", Helvetica, "Microsoft JhengHei",
+      "微軟正黑體", "Microsoft YaHei", "微软雅黑", "PingFang TC", sans-serif;
+    --measure: 36rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --marble: #141319;
+      --slab: #1c1b22;
+      --sunk: #101015;
+      --ink: #e9e7e0;
+      --muted: #9c99a4;
+      --faint: #8a8794;
+      --aegean: #82a2c6;
+      --aegean-soft: #1b2635;
+      --bronze: #c8a45c;
+      --bronze-oi: #6f5522;
+      --dim-oi: #56545e;
+      --bronze-soft: #2a2318;
+      --rule: #332f3c;
+      --hair: #26232d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --marble: #141319;
+    --slab: #1c1b22;
+    --sunk: #101015;
+    --ink: #e9e7e0;
+    --muted: #9c99a4;
+    --faint: #8a8794;
+    --aegean: #82a2c6;
+    --aegean-soft: #1b2635;
+    --bronze: #c8a45c;
+      --bronze-oi: #6f5522;
+      --dim-oi: #56545e;
+    --bronze-soft: #2a2318;
+    --rule: #332f3c;
+    --hair: #26232d;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+  }
+  body {
+    margin: 0;
+    background: var(--marble);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 700;
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    color: var(--aegean);
+  }
+  :focus-visible {
+    outline: 2px solid var(--bronze);
+    outline-offset: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  .wrap {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+  }
+  .narrow {
+    max-width: var(--measure);
+  }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  /* 碑刻式標籤：拉丁／希臘小型大寫，寬字距 */
+  .inscr {
+    font-family: var(--class);
+    font-size: 0.86rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0;
+  }
+  .greek {
+    font-family: var(--class);
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    color: var(--bronze);
+  }
+  .translit {
+    font-family: var(--class);
+    font-style: italic;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ 導覽：一列節目單 ============ */
+  nav {
+    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: color-mix(in srgb, var(--marble) 90%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hair);
+  }
+  nav ol {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 50rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav ol::-webkit-scrollbar {
+    display: none;
+  }
+  nav a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    white-space: nowrap;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--bronze);
+  }
+  nav::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2.5rem;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, var(--marble));
+  }
+  nav a i {
+    font-family: var(--class);
+    font-style: normal;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+  }
+
+  /* ============ 扉頁 ============ */
+  header {
+    padding: 6rem 0 4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+  .rise:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+  .rise:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+  .rise:nth-child(4) {
+    animation-delay: 0.24s;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.7rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .hgreek {
+    font-family: var(--class);
+    font-size: 1.5rem;
+    letter-spacing: 0.5em;
+    color: var(--bronze);
+    margin-bottom: 1.6rem;
+    padding-inline-start: 0.5em;
+  }
+  h1 {
+    font-size: clamp(2rem, 5.6vw, 3.1rem);
+    letter-spacing: -0.005em;
+    line-height: 1.35;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--bronze);
+  }
+  .sub {
+    margin: 1.3rem auto 0;
+    max-width: 30rem;
+    color: var(--muted);
+    font-size: 1.02rem;
+    font-weight: 400;
+  }
+  .colophon {
+    margin-top: 2.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem 1.2rem;
+    font-size: 0.84rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .colophon b {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ 五線譜分隔 ============ */
+  /* 五條線 + 一個符頭。符頭高度 = 樂章序號，越後面的樂章音越高。 */
+  .stave {
+    position: relative;
+    height: 60px;
+    margin: 0;
+  }
+  .stave::before {
+    content: "";
+    position: absolute;
+    inset: 16px 0 11px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--rule) 0 1px,
+      transparent 1px 8px
+    );
+  }
+  .stave .head {
+    position: absolute;
+    left: 3.2rem;
+    top: calc(var(--y) - 5px);
+    width: 14px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bronze);
+  }
+  .stave .head.hollow {
+    background: none;
+    box-shadow: inset 0 0 0 1.6px var(--bronze);
+  }
+  .stave .stem {
+    position: absolute;
+    left: calc(3.2rem + 13px);
+    top: calc(var(--y) - 26px);
+    width: 1.4px;
+    height: 26px;
+    background: var(--bronze);
+  }
+  .stave .num {
+    position: absolute;
+    left: calc(3.2rem + 34px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--class);
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .stave .fin {
+    position: absolute;
+    right: 0;
+    top: 14px;
+    bottom: 10px;
+    width: 7px;
+  }
+  .stave .fin::before,
+  .stave .fin::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: var(--rule);
+  }
+  .stave .fin::before {
+    left: 0;
+    width: 1px;
+  }
+  .stave .fin::after {
+    right: 0;
+    width: 3px;
+  }
+
+  /* ============ 段落 ============ */
+  section {
+    padding: 3.4rem 0;
+  }
+  section + section {
+    border-top: 1px solid var(--hair);
+  }
+  .mv {
+    border-top: none;
+    padding-top: 1rem;
+  }
+  h2 {
+    font-size: clamp(1.45rem, 3.4vw, 1.95rem);
+  }
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  .claim {
+    color: var(--muted);
+    max-width: var(--measure);
+    font-weight: 400;
+  }
+  .tempo {
+    font-family: var(--class);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--aegean);
+    letter-spacing: 0.02em;
+  }
+
+  /* 樂章開頭 */
+  .mv-head {
+    text-align: center;
+    margin-bottom: 2.4rem;
+  }
+  .mv-head .greek {
+    display: block;
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.2rem;
+  }
+  .mv-head .translit {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .mv-head h2 {
+    margin-bottom: 0.5rem;
+  }
+  .mv-head .claim {
+    margin: 0.9rem auto 0;
+  }
+
+  /* ============ 數據：碑刻數字 ============ */
+  .figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 2rem 1.5rem;
+    padding: 1.8rem 0;
+    border-block: 1px solid var(--hair);
+  }
+  .fig {
+    text-align: center;
+  }
+  .fig b {
+    display: block;
+    font-family: var(--class);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+    line-height: 1;
+    color: var(--bronze);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .fig span {
+    display: block;
+    margin-top: 0.7rem;
+    font-size: 0.86rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  /* ============ 引語 ============ */
+  blockquote {
+    margin: 0;
+    max-width: var(--measure);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    line-height: 1.7;
+  }
+  blockquote.center {
+    margin-inline: auto;
+    text-align: center;
+  }
+  blockquote::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--bronze);
+    margin-bottom: 1.1rem;
+  }
+  blockquote.center::before {
+    margin-inline: auto;
+  }
+  blockquote footer {
+    margin-top: 1rem;
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+
+  /* ============ τέχνη / φρόνησις 對位 ============ */
+  .duet {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .voice {
+    background: var(--slab);
+    padding: 1.4rem 1.5rem;
+  }
+  .voice .part {
+    font-family: var(--class);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.45rem;
+  }
+  .voice h3 {
+    font-size: 1.08rem;
+  }
+  .voice ul {
+    margin: 0.85rem 0 0;
+    padding-inline-start: 1.05rem;
+    font-size: 0.94rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .voice li {
+    margin-bottom: 0.38rem;
+  }
+  .voice.techne .part,
+  .voice.techne h3 {
+    color: var(--aegean);
+  }
+  .voice.techne {
+    box-shadow: inset 0 3px 0 var(--aegean);
+  }
+  .voice.phron .part,
+  .voice.phron h3 {
+    color: var(--bronze);
+  }
+  .voice.phron {
+    box-shadow: inset 0 3px 0 var(--bronze);
+  }
+  .voice.neutral {
+    box-shadow: inset 0 3px 0 var(--rule);
+  }
+  .voice.neutral .part,
+  .voice.neutral h3 {
+    color: var(--muted);
+  }
+
+  /* ============ 注解 ============ */
+  .gloss {
+    background: var(--slab);
+    border: 1px solid var(--hair);
+    padding: 1.15rem 1.35rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+  .gloss strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .gloss.mark {
+    border-inline-start: 3px solid var(--bronze);
+  }
+
+  /* ============ 階梯 1.0 – 4.0 ============ */
+  .ladder {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .rung {
+    background: var(--slab);
+    padding: 0.9rem 1.3rem;
+    display: grid;
+    grid-template-columns: 3.4rem minmax(0, 9rem) minmax(0, 1fr);
+    gap: 0.15rem 1rem;
+    align-items: baseline;
+  }
+  .rung .lv {
+    font-family: var(--class);
+    font-size: 1.05rem;
+    color: var(--aegean);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .rung .nm {
+    font-weight: 700;
+  }
+  .rung .ds {
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 400;
+  }
+  .ladder.wide .rung {
+    grid-template-columns: 7.5rem minmax(0, 10rem) minmax(0, 1fr);
+  }
+  .ladder.wide .rung .lv {
+    font-size: 0.95rem;
+    color: var(--bronze);
+  }
+  @media (max-width: 34rem) {
+    .ladder.wide .rung {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ladder.wide .rung .ds {
+      grid-column: 1;
+    }
+  }
+  .case h4 {
+    font-size: 1.1rem;
+  }
+  .rung.apex {
+    background: var(--bronze-soft);
+  }
+  .rung.apex .lv {
+    color: var(--bronze);
+  }
+  .rung.apex .nm {
+    color: var(--bronze);
+  }
+  @media (max-width: 34rem) {
+    .rung {
+      grid-template-columns: 3.4rem minmax(0, 1fr);
+    }
+    .rung .ds {
+      grid-column: 2;
+    }
+  }
+
+  /* ============ 洞穴圖 ============ */
+  .c-lbl {
+    font-family: var(--class);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .c-it {
+    font-style: italic;
+  }
+  .c-faint {
+    fill: var(--faint);
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+  .c-aeg {
+    fill: var(--aegean);
+  }
+  .c-ink {
+    fill: var(--ink);
+  }
+  .c-brz {
+    fill: var(--bronze);
+  }
+  .c-mut {
+    fill: var(--muted);
+  }
+  .c-wall {
+    fill: none;
+    stroke: var(--rule);
+    stroke-width: 1;
+  }
+  .c-shadow {
+    fill: var(--aegean);
+    opacity: 0.55;
+  }
+  .c-rays {
+    stroke: var(--bronze);
+    stroke-width: 0.9;
+    opacity: 0.5;
+  }
+  .c-real {
+    fill: var(--ink);
+  }
+  .c-fire {
+    fill: var(--bronze);
+  }
+  .c-halo {
+    fill: none;
+    stroke: var(--bronze);
+    stroke-width: 1;
+    opacity: 0.45;
+  }
+  .c-halo2 {
+    fill: none;
+    stroke: var(--bronze);
+    stroke-width: 1;
+    opacity: 0.22;
+  }
+  .c-person {
+    stroke: var(--muted);
+    stroke-width: 1.6;
+    fill: none;
+  }
+  figure {
+    margin: 0;
+  }
+  .cave {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: var(--slab);
+    border: 1px solid var(--hair);
+  }
+  figcaption {
+    margin-top: 0.7rem;
+    font-size: 0.84rem;
+    color: var(--faint);
+    font-weight: 400;
+  }
+  .shadowmap {
+    display: grid;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .shadowmap div {
+    background: var(--slab);
+    padding: 0.9rem 1.3rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  .shadowmap .real {
+    color: var(--aegean);
+  }
+  .shadowmap .arr {
+    font-family: var(--class);
+    color: var(--faint);
+  }
+  .shadowmap .taken {
+    color: var(--bronze);
+  }
+  @media (max-width: 30rem) {
+    .shadowmap div {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+    .shadowmap .arr {
+      display: none;
+    }
+  }
+
+  /* ============ 列舉 ============ */
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .tile {
+    background: var(--slab);
+    padding: 1.2rem 1.35rem;
+  }
+  .tile .ord {
+    font-family: var(--class);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--bronze);
+    display: block;
+    margin-bottom: 0.45rem;
+  }
+  .tile h4 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .tile p {
+    margin-top: 0.35rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .tile.coda-tile {
+    background: var(--bronze-soft);
+  }
+  .tile.coda-tile h4 {
+    color: var(--bronze);
+  }
+
+  .beads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .bead {
+    font-size: 0.86rem;
+    font-weight: 400;
+    padding: 0.34rem 0.8rem;
+    border: 1px solid var(--rule);
+    background: var(--slab);
+    color: var(--muted);
+  }
+
+  /* ============ 案例 ============ */
+  .case {
+    background: var(--slab);
+    border: 1px solid var(--rule);
+    padding: 1.7rem 1.6rem;
+  }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 1.3rem;
+    margin-top: 1.4rem;
+  }
+  .metric b {
+    display: block;
+    font-family: var(--class);
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--aegean);
+    font-variant-numeric: tabular-nums lining-nums;
+    line-height: 1.1;
+  }
+  .metric span {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .scroll-x {
+    overflow-x: auto;
+    margin-top: 1.3rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  th,
+  td {
+    text-align: end;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 1px solid var(--hair);
+  }
+  th:first-child,
+  td:first-child {
+    text-align: start;
+  }
+  th {
+    font-family: var(--class);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    font-weight: 700;
+  }
+  caption {
+    text-align: start;
+    font-size: 0.82rem;
+    color: var(--faint);
+    padding-bottom: 0.5rem;
+    font-weight: 400;
+  }
+
+  /* ============ 行動 ============ */
+  #action {
+    background: var(--sunk);
+  }
+  .roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.4rem 0;
+  }
+  .roles button {
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0.42rem 0.95rem;
+    border: 1px solid var(--rule);
+    background: var(--slab);
+    color: var(--muted);
+  }
+  .roles button:hover {
+    border-color: var(--bronze);
+    color: var(--ink);
+  }
+  .roles button[aria-pressed="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--marble);
+  }
+  .todo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .todo li {
+    background: var(--slab);
+    padding: 1.1rem 1.35rem;
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 0.2rem 1.1rem;
+    align-items: baseline;
+  }
+  .todo li[hidden] {
+    display: none;
+  }
+  .todo .who {
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--bronze);
+  }
+  .todo .what {
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+  @media (max-width: 34rem) {
+    .todo li {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ============ 終曲 ============ */
+  #coda {
+    background: var(--ink);
+    color: var(--marble);
+    border-top: none;
+  }
+  #coda .inscr {
+    color: var(--dim-oi);
+  }
+  #coda blockquote {
+    color: var(--marble);
+  }
+  #coda blockquote::before {
+    background: var(--bronze-oi);
+  }
+  #coda blockquote footer {
+    color: var(--dim-oi);
+  }
+  #coda .hgreek {
+    color: var(--bronze-oi);
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ============ 出處 ============ */
+  #refs {
+    font-size: 0.87rem;
+  }
+  #refs ol {
+    margin: 0;
+    padding-inline-start: 1.4rem;
+    color: var(--muted);
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  footer.end {
+    padding: 2.4rem 0 4rem;
+    font-size: 0.84rem;
+    color: var(--faint);
+    font-weight: 400;
+    text-align: center;
+  }
+
+  @media print {
+    nav {
+      display: none;
+    }
+    body {
+      background: #fff;
+      color: #000;
+      font-size: 11pt;
+    }
+    section {
+      break-inside: avoid;
+      padding: 1rem 0;
+    }
+    .todo li[hidden] {
+      display: grid !important;
+    }
+  }
+</style>
+
+<nav aria-label="五個樂章">
+  <ol>
+    <li>
+      <a href="#m1"><i>I</i>疊加 ≠ 轉型</a>
+    </li>
+    <li>
+      <a href="#m2"><i>II</i>認知成本</a>
+    </li>
+    <li>
+      <a href="#m3"><i>III</i>到不了的那一哩</a>
+    </li>
+    <li>
+      <a href="#m4"><i>IV</i>信任是護城河</a>
+    </li>
+    <li>
+      <a href="#m5"><i>V</i>認知翻轉靠領導</a>
+    </li>
+    <li>
+      <a href="#action"><i>Coda</i>下週的一件事</a>
+    </li>
+  </ol>
+</nav>
+
+<header>
+  <div class="wrap">
+    <p class="hgreek rise">ΣΚΙΑ</p>
+    <h1 class="rise">AI 革命真正的戰場，<br />不在模型，<em>在你怎麼想</em></h1>
+    <p class="sub rise">
+      當每家醫院都有同一套 AI，拉開差距的，是判斷力、信任與領導力。
+    </p>
+    <div class="colophon rise">
+      <span><b>楊翼寧 醫師</b></span>
+      <span>腎臟科主治醫師</span>
+      <span>品管部醫療安全科執行秘書</span>
+      <span>臨床 AI 建造者</span>
+      <span>奇美醫院 教學部師培中心 · CFD · 2026 / 10</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 序 ===== -->
+<section>
+  <div class="wrap stack">
+    <p class="inscr">Praeludium · 序曲</p>
+    <blockquote>
+      這些省下來的時間，有沒有充分展現它的價值、變成病人更好的預後？
+      <footer>
+        我們把「工具」做到了頂。轉型，還沒開始。走在最前面的我們，站在跟所有人一樣的懸崖邊。
+      </footer>
+    </blockquote>
+    <p class="claim" style="margin-top: 0.8rem">
+      不是我們特別慢——全世界卡在同一格。
+    </p>
+    <div class="figures">
+      <div class="fig">
+        <b>95%</b><span>組織投入生成式 AI，沒有可測量的利潤成長</span>
+      </div>
+      <div class="fig">
+        <b>89%</b><span>企業高層說，過去三年 AI 沒帶來生產力提升</span>
+      </div>
+      <div class="fig">
+        <b>12%</b><span>已導入 AI 的員工，強烈同意工作方式真的變了</span>
+      </div>
+    </div>
+    <p class="gloss">
+      工具買了、系統上了、訓練也跑了。日常，沒有變。<strong
+        >這是預設結局。</strong
+      >
+    </p>
+
+    <blockquote style="margin-top: 1.6rem">
+      如果 AI 能把你所有的工作都做完，你最不願意讓它做哪一件？
+      <footer>先不用說出來。記住它——讀到樂章三，我們會回來對答案。</footer>
+    </blockquote>
+
+    <p class="gloss mark">
+      <strong>一個沒人願意講的兩難：</strong>不用
+      AI，五年後我們被拉開；照現在這樣用 AI，我們會先把人用壞。
+      所以不談「要不要用 AI」——那早就不是問題。要談的是：<strong
+        >用它的方式，決定五年後我們是變強，還是只是變忙。</strong
+      >
+    </p>
+  </div>
+</section>
+
+<!-- ===== 節目單 ===== -->
+<section>
+  <div class="wrap stack">
+    <p class="inscr">Programma · 節目單</p>
+    <h2>五個樂章，拆掉一個叫「疊加」的預設</h2>
+    <div class="tiles" style="margin-top: 0.6rem">
+      <a class="tile" href="#m1" style="text-decoration: none; color: inherit">
+        <span class="ord">I · μεταμόρφωσις</span>
+        <h4>疊加 ≠ 轉型</h4>
+        <p>工具會被拉平，組織不會</p></a
+      >
+      <a class="tile" href="#m2" style="text-decoration: none; color: inherit">
+        <span class="ord">II · σχολή</span>
+        <h4>認知成本</h4>
+        <p>別用 AI 累垮你最需要的人</p></a
+      >
+      <a class="tile" href="#m3" style="text-decoration: none; color: inherit">
+        <span class="ord">III · σκιά</span>
+        <h4>AI 到不了的那一哩</h4>
+        <p>床邊的深層感知，是我們的主場</p></a
+      >
+      <a class="tile" href="#m4" style="text-decoration: none; color: inherit">
+        <span class="ord">IV · πίστις</span>
+        <h4>信任才是護城河</h4>
+        <p>治理失敗，不是技術失敗</p></a
+      >
+      <a class="tile" href="#m5" style="text-decoration: none; color: inherit">
+        <span class="ord">V · παιδεία</span>
+        <h4>認知翻轉靠領導</h4>
+        <p>工具買得到，認知買不到</p></a
+      >
+      <a
+        class="tile coda-tile"
+        href="#action"
+        style="text-decoration: none; color: inherit"
+      >
+        <span class="ord">Coda · πρᾶξις</span>
+        <h4>最終章</h4>
+        <p>屬於你的樂章</p></a
+      >
+    </div>
+    <p class="gloss">
+      全篇的兩個聲部：<span class="greek">τέχνη</span>（téchnē，技藝與工具）與
+      <span class="greek">φρόνησις</span
+      >（phrónēsis，實踐智慧——床邊那個「該怎麼做」的判斷）。
+      每一章都是這兩個聲部在對位——收在
+      <span class="greek">πρᾶξις</span
+      >（prâxis，付諸實行）：判斷若沒走成動作，就還停在牆上。
+    </p>
+  </div>
+</section>
+
+<!-- ===== I ===== -->
+<div class="stave" aria-hidden="true">
+  <span class="head" style="--y: 48px"></span
+  ><span class="stem" style="--y: 48px"></span><span class="num">I</span>
+</div>
+<section class="mv" id="m1">
+  <div class="wrap stack">
+    <div class="mv-head">
+      <span class="greek">μεταμόρφωσις</span>
+      <span class="translit">metamórphōsis · 形變</span>
+      <p class="tempo">Allegro risoluto</p>
+      <h2 style="margin-top: 0.5rem">疊加 ≠ 轉型</h2>
+      <p class="claim">
+        部署的人很多，拿到成效的很少。差距不在技術本身，在於組織的<b
+          >運作模型（operating model）</b
+        >有沒有跟著改變。
+      </p>
+    </div>
+
+    <blockquote>
+      AI
+      不會平等地創造價值。很多時候，它只是把價值，從動作慢的組織，重新分配給動作快的。
+      <footer>
+        這不是一場齊頭式的升級。它是一次重新洗牌。—— McKinsey, 2026
+      </footer>
+    </blockquote>
+
+    <h3 style="margin-top: 1.6rem">今天的分水嶺</h3>
+    <div class="duet">
+      <div class="voice techne">
+        <span class="part">Bolt-on</span>
+        <h3>疊加</h3>
+        <ul>
+          <li>在舊流程旁邊多擺一個 AI 工具</li>
+          <li>晨會照開、紀錄照寫</li>
+          <li>治理、團隊、簽核層維持舊系統</li>
+          <li>工具進來了，流程沒動</li>
+        </ul>
+      </div>
+      <div class="voice phron">
+        <span class="part">Rewiring</span>
+        <h3>重新連線</h3>
+        <ul>
+          <li>先問：這流程存在的目的是什麼？</li>
+          <li>AI 做掉 70%，人專注在關鍵 30%</li>
+          <li>角色與職責被重新定義</li>
+          <li>人的時間配置與期待，徹底改變</li>
+        </ul>
+      </div>
+    </div>
+    <p class="gloss">
+      成功轉型的組織 EBITDA 可提升約
+      <strong>20%</strong>——代價是運作方式必須從根本改變。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">醫院版的疊加：上了敗血症預警，然後呢？</h3>
+    <div class="beads">
+      <span class="bead">誰負責看？</span
+      ><span class="bead">看到之後誰決策？</span
+      ><span class="bead">決策了誰去執行？</span>
+    </div>
+    <p class="gloss mark">
+      這三件事，沒有一件被重新定義。結果是<strong
+        >警示疲勞（alert fatigue）</strong
+      >——一個班可以跳幾十次，真正重要的那一次反而被淹掉。這不是把病人變安全，是把雜訊變多。
+    </p>
+
+    <blockquote style="margin-top: 1.6rem">
+      這個流程存在的目的是什麼？如果 AI 可以做掉其中 70%，剩下的
+      30%，人應該把力氣放在哪裡？
+      <footer>
+        Ambient 病歷幫你做掉 70%
+        的文書——然後呢？是把省下的時間，還給病人：多問一句、多解釋一段、多看他一眼。
+      </footer>
+    </blockquote>
+
+    <h3 style="margin-top: 1.6rem">成功轉型的六大能力：只有兩項是技術</h3>
+    <div class="duet">
+      <div class="voice techne">
+        <span class="part">τέχνη · 兩項</span>
+        <h3>技術</h3>
+        <ul>
+          <li>運作模型　Operating model</li>
+          <li>技術環境　Technology environment</li>
+        </ul>
+      </div>
+      <div class="voice phron">
+        <span class="part">φρόνησις · 四項</span>
+        <h3>人的問題</h3>
+        <ul>
+          <li>轉型路線圖　Transformation roadmapping</li>
+          <li>高技能人才庫　Talent bench</li>
+          <li>數據文化　Data embedding</li>
+          <li>採納與規模化　Adoption and scaling</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="gloss">
+      <strong>真正的護城河不是工具，是學得比對手快。</strong
+      >星展銀行（DBS）在生成式 AI 爆紅之前好幾年，就持續投入基礎能力，浪來了它跑得動，做出可驗證的 AI
+      效益。當每個人都用得到同一個模型，工具就不再是差異——差異是學習速度，而且它會複利。
+    </p>
+  </div>
+</section>
+
+<!-- ===== II ===== -->
+<div class="stave" aria-hidden="true">
+  <span class="head" style="--y: 40px"></span
+  ><span class="stem" style="--y: 40px"></span><span class="num">II</span>
+</div>
+<section class="mv" id="m2">
+  <div class="wrap stack">
+    <div class="mv-head">
+      <span class="greek">σχολή</span>
+      <span class="translit">scholḗ · 思考所需的餘裕</span>
+      <p class="tempo">Adagio affaticato</p>
+      <h2 style="margin-top: 0.5rem">認知成本</h2>
+      <p class="claim">
+        別用 AI 累垮你最需要的人。<b>65%</b> 的員工說 AI
+        對「個人效率」有某種或極高程度的幫助，組織整體卻沒有看到等比例的效益。
+      </p>
+    </div>
+
+    <p class="gloss">
+      AI 讓個人變快，不會自動讓組織變好。因為組織是一個系統——<strong
+        >系統本身若是亂的，AI 只會讓混亂跑得更快。</strong
+      >
+    </p>
+
+    <h3 style="margin-top: 1.6rem">
+      四件事同時壓上來，被侵蝕的是「最好的思考」
+    </h3>
+    <div class="duet">
+      <div class="voice techne">
+        <span class="part">同時發生</span>
+        <h3>認知負荷</h3>
+        <ul>
+          <li>學新工具</li>
+          <li>＋ 適應新流程</li>
+          <li>＋ 維持日常表現</li>
+          <li>＋ 不確定的環境</li>
+        </ul>
+      </div>
+      <div class="voice phron">
+        <span class="part">被犧牲</span>
+        <h3>AI 最無法取代的一塊</h3>
+        <ul>
+          <li>深度分析</li>
+          <li>創意判斷</li>
+          <li>複雜決策</li>
+        </ul>
+      </div>
+    </div>
+    <p class="gloss">
+      一個護理師要同時應付三套不互通的系統、每五分鐘被打斷、還要學這一季新上的工具——她個人可能真的變快了，但整個病房的照護品質，不會因此變好。
+    </p>
+
+    <blockquote style="margin-top: 1.6rem">
+      如果我們導入 AI 的方式，讓同仁疲於奔命，那我們等於是在用
+      AI，親手摧毀人類在 AI 時代最需要保留的能力。
+      <footer>對一個醫師、一個護理師來說，判斷力下降，是會出事的。</footer>
+    </blockquote>
+
+    <h3 style="margin-top: 1.6rem">給主管的一件正式領導工作</h3>
+    <div class="duet">
+      <div class="voice techne">
+        <span class="part">Phase I</span>
+        <h3>執行期</h3>
+        <ul>
+          <li>密集導入新工具與新流程</li>
+          <li>認知負荷本來就高</li>
+        </ul>
+      </div>
+      <div class="voice phron">
+        <span class="part">Phase II</span>
+        <h3>整合期</h3>
+        <ul>
+          <li>消化改變、找到新節奏</li>
+          <li>重新變熟練</li>
+        </ul>
+      </div>
+    </div>
+    <p class="gloss mark">
+      很多組織的問題，是把整個轉型設計成一個<strong>永無止盡的執行期</strong>——每一季都有新系統要學，大家永遠停在「新手模式」，永遠進不了能發揮深度判斷的狀態。
+    </p>
+  </div>
+</section>
+
+<!-- ===== III ===== -->
+<div class="stave" aria-hidden="true">
+  <span class="head" style="--y: 32px"></span
+  ><span class="stem" style="--y: 32px"></span><span class="num">III</span>
+</div>
+<section class="mv" id="m3">
+  <div class="wrap stack">
+    <div class="mv-head">
+      <span class="greek">σκιά</span>
+      <span class="translit">skiá · 影子</span>
+      <p class="tempo">Andante contemplativo</p>
+      <h2 style="margin-top: 0.5rem">AI 到不了的那一哩</h2>
+      <p class="claim">
+        床邊的深層感知，是我們的主場。把注意力、預算、人才全押在 AI
+        上，就是在種一片<b>單一作物</b>的田——短期效率很高，一場對症的病蟲害就能讓整片田崩掉。
+      </p>
+    </div>
+
+    <p class="gloss mark">
+      AI 越能替我們想 → 我們越少自己想 → 深度思考的肌肉越弱 → 越依賴 AI
+      替我們想。這是一個會自己轉下去的迴圈。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">一道階梯，最後一哩是人的</h3>
+    <div class="ladder">
+      <div class="rung">
+        <span class="lv">1.0</span><span class="nm">自動化</span
+        ><span class="ds">排班、計算、整理報告數據</span>
+      </div>
+      <div class="rung">
+        <span class="lv">2.0</span><span class="nm">導航</span
+        ><span class="ds">複雜資訊裡辨方向、鑑別診斷輔助</span>
+      </div>
+      <div class="rung">
+        <span class="lv">3.0</span><span class="nm">模式感知與塑造</span
+        ><span class="ds">感知正在形成的模式，主動介入</span>
+      </div>
+      <div class="rung apex">
+        <span class="lv">4.0</span><span class="nm">深層感知與原創</span
+        ><span class="ds"
+          >從更深的源頭，創造新的可能——這一哩，沒有任何模型替你走完</span
+        >
+      </div>
+    </div>
+    <p class="gloss">
+      大多數組織的 AI 投資，都集中在強化 <strong>1.0 和 2.0</strong>。
+    </p>
+
+    <blockquote style="margin-top: 1.6rem">
+      走進病房、還沒看數據，心裡先響一聲的「這個病人，怪怪的」。
+      <footer>
+        是你坐下來，跟一個末期病人的家屬決定要不要繼續透析、要不要 DNR
+        的那半小時；是你怎麼把一個壞消息，說得讓對方接得住。這些，沒有任何一個模型，能替你走完。
+      </footer>
+    </blockquote>
+
+    <h3 style="margin-top: 1.8rem">柏拉圖的洞穴，重新出現在會議室</h3>
+    <figure>
+      <svg
+        class="cave"
+        viewBox="0 0 800 300"
+        role="img"
+        aria-labelledby="caveTitle caveDesc"
+      >
+        <title id="caveTitle">柏拉圖洞穴的示意圖</title>
+        <desc id="caveDesc">
+          火光把真實物件投射成牆上的影子，被鏈住的觀看者只看得見影子。
+        </desc>
+        <rect class="c-wall" x="40" y="30" width="150" height="240" />
+        <text class="c-lbl c-faint" x="115" y="24" text-anchor="middle">
+          WALL · 牆
+        </text>
+        <g class="c-shadow">
+          <rect x="70" y="70" width="90" height="34" />
+          <rect x="70" y="130" width="90" height="34" />
+          <rect x="70" y="190" width="90" height="34" />
+        </g>
+        <text class="c-lbl c-it c-aeg" x="115" y="292" text-anchor="middle">
+          σκιαί · 影子
+        </text>
+        <g class="c-rays">
+          <line x1="640" y1="150" x2="190" y2="70" />
+          <line x1="640" y1="150" x2="190" y2="104" />
+          <line x1="640" y1="150" x2="190" y2="130" />
+          <line x1="640" y1="150" x2="190" y2="164" />
+          <line x1="640" y1="150" x2="190" y2="190" />
+          <line x1="640" y1="150" x2="190" y2="224" />
+        </g>
+        <g class="c-real">
+          <rect x="392" y="84" width="30" height="26" />
+          <circle cx="407" cy="150" r="15" />
+          <polygon points="407,178 424,208 390,208" />
+        </g>
+        <text class="c-lbl c-it c-ink" x="407" y="238" text-anchor="middle">
+          τὰ ὄντα · 真實之物
+        </text>
+        <circle class="c-fire" cx="640" cy="150" r="17" />
+        <circle class="c-halo" cx="640" cy="150" r="30" />
+        <circle class="c-halo2" cx="640" cy="150" r="44" />
+        <text class="c-lbl c-it c-brz" x="640" y="216" text-anchor="middle">
+          πῦρ · 火
+        </text>
+        <g class="c-person">
+          <circle cx="248" cy="146" r="9" />
+          <line x1="248" y1="155" x2="248" y2="186" />
+          <line x1="248" y1="186" x2="238" y2="206" />
+          <line x1="248" y1="186" x2="258" y2="206" />
+          <line x1="248" y1="164" x2="232" y2="172" />
+          <line x1="248" y1="164" x2="264" y2="172" />
+        </g>
+        <text class="c-lbl c-it c-mut" x="248" y="238" text-anchor="middle">
+          我們
+        </text>
+      </svg>
+      <figcaption>我們背對火光，面向牆壁。看得見的，只有影子。</figcaption>
+    </figure>
+
+    <div class="shadowmap" style="margin-top: 1.2rem">
+      <div>
+        <span class="real">儀表板上的數字</span><span class="arr">→</span
+        ><span class="taken">被當成了洞見</span>
+      </div>
+      <div>
+        <span class="real">模型的預測與回應</span><span class="arr">→</span
+        ><span class="taken">被當成了判斷</span>
+      </div>
+      <div>
+        <span class="real">AI 生成的摘要</span><span class="arr">→</span
+        ><span class="taken">被當成了理解</span>
+      </div>
+    </div>
+    <p class="gloss">
+      AI
+      生成的一切，都是投在牆上的影子——越來越逼真，卻是沒有內在覺知的模式重組。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">
+      回到序曲那個問題：科學家最不願意交給 AI 的四件事
+    </h3>
+    <div class="beads">
+      <span class="bead">I　思考的過程</span
+      ><span class="bead">II　好奇的樂趣</span>
+      <span class="bead">III　與真實世界的接觸</span
+      ><span class="bead">IV　跟人共同創造</span>
+    </div>
+    <p class="gloss mark">
+      他們的答案，不是苦差事。人最珍惜的，是「參與一件事的過程」本身，不只是結果。<strong
+        >請對照你一開始心裡那個答案——別把臨床推理的樂趣、把醫病關係，當成低效率的東西。</strong
+      >
+    </p>
+
+    <h3 style="margin-top: 1.6rem">買 AI 的預算表旁邊，要有另一欄</h3>
+    <div class="duet">
+      <div class="voice techne">
+        <span class="part">填得很滿</span>
+        <h3>第一套基礎設施</h3>
+        <ul>
+          <li>模型與運算資源</li>
+          <li>資料管線與平台</li>
+          <li>工具授權與教育訓練</li>
+        </ul>
+      </div>
+      <div class="voice phron">
+        <span class="part">通常空白</span>
+        <h3>第二套基礎設施</h3>
+        <ul>
+          <li>刻意創造的深層感知空間</li>
+          <li>跨部門的集體感知對話</li>
+          <li>為 3.0／4.0 能力設計的評估</li>
+        </ul>
+      </div>
+    </div>
+    <p class="gloss">
+      解方不是別用
+      AI——是<strong>刻意地、有預算地</strong>，去保護與培育人的深度感知能力。
+    </p>
+  </div>
+</section>
+
+<!-- ===== IV ===== -->
+<div class="stave" aria-hidden="true">
+  <span class="head" style="--y: 24px"></span
+  ><span class="stem" style="--y: 24px"></span><span class="num">IV</span>
+</div>
+<section class="mv" id="m4">
+  <div class="wrap stack">
+    <div class="mv-head">
+      <span class="greek">πίστις</span>
+      <span class="translit">pístis · 信任</span>
+      <p class="tempo">Grave</p>
+      <h2 style="margin-top: 0.5rem">信任才是護城河</h2>
+      <p class="claim">
+        治理失敗，不是技術失敗。同樣一套技術能力，能救人，也能在沒人看管的時候傷人。
+      </p>
+    </div>
+
+    <h3>案例一 · Royal Free × DeepMind：一支 AKI 警示 app，倒在治理上</h3>
+    <div class="ladder" style="flex-direction: column; margin-top: 0.6rem">
+      <div class="rung">
+        <span class="lv">01</span><span class="nm">Streams</span
+        ><span class="ds">偵測急性腎損傷、即時警示醫師。臨床上真的有用。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">02</span><span class="nm">160 萬筆</span
+        ><span class="ds"
+          >病人資料交給 DeepMind，未充分告知、拿不出合法依據</span
+        >
+      </div>
+      <div class="rung">
+        <span class="lv">03</span><span class="nm">ICO 2017</span
+        ><span class="ds">英國資料保護主管機關認定：違反資料保護法</span>
+      </div>
+    </div>
+    <p class="gloss mark">
+      被判違法的<strong>不是那個 app</strong>——app 是好的。倒下的，是治理。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">
+      案例二 · 回到那個敗血症警示：沒被獨立驗證，就接上臨床
+    </h3>
+    <div class="figures">
+      <div class="fig"><b>33%</b><span>敏感度 sensitivity</span></div>
+      <div class="fig"><b>0.63</b><span>AUC</span></div>
+      <div class="fig"><b>27,697</b><span>採用病人數</span></div>
+    </div>
+    <p class="gloss">
+      被數百家醫院採用的模型，實測結果遠低於廠商宣稱的水準。不只沒接住該接的病人，還製造一大堆假警報——<strong>警示疲勞</strong>。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">信任會複利，失去也會</h3>
+    <div class="duet">
+      <div class="voice phron">
+        <span class="part">正向</span>
+        <h3>複利</h3>
+        <ul>
+          <li>病人信任你的系統</li>
+          <li>願意分享更多資料</li>
+          <li>系統變得更準</li>
+          <li>更被信任</li>
+        </ul>
+      </div>
+      <div class="voice neutral">
+        <span class="part">負向</span>
+        <h3>複利</h3>
+        <ul>
+          <li>一次信任危機，可以在短時間內摧毀整個機構在病人眼中的形象</li>
+          <li>信任一旦損失，重建的代價遠遠超過一開始就做對的成本</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 1.6rem">歐盟 AI 法案：醫療＝高風險</h3>
+    <div class="beads">
+      <span class="bead">風險管理</span><span class="bead">資料品質</span
+      ><span class="bead">紀錄追蹤</span><span class="bead">技術文件</span>
+      <span class="bead">透明資訊</span><span class="bead">人類監督</span
+      ><span class="bead">強健性</span><span class="bead">資安與準確性</span>
+    </div>
+    <p class="gloss mark">
+      高風險合規期限 2026 → 2027，但延期前就有
+      <strong>78%</strong> 的組織還沒有任何有意義的動作。<strong
+        >延期不是免除，是給你更多時間，去做本來就該做的事。</strong
+      >
+    </p>
+
+    <h3 style="margin-top: 1.6rem">哈佛三階段手冊（順序不能跳）</h3>
+    <div class="tiles">
+      <div class="tile">
+        <span class="ord">I</span>
+        <h4>盤點</h4>
+        <p>全院到底在哪裡用了 AI？連清單都沒有，就沒有治理可言。</p>
+      </div>
+      <div class="tile">
+        <span class="ord">II</span>
+        <h4>設計進去</h4>
+        <p>上線前就把透明、可解釋、人為監督設計進去——事後補永遠更貴。</p>
+      </div>
+      <div class="tile">
+        <span class="ord">III</span>
+        <h4>讓人看見</h4>
+        <p>先知道自己在用什麼，才能誠實對外。</p>
+      </div>
+    </div>
+    <p class="gloss">
+      信任有三個面向：<strong>病人、同仁、主管機關</strong>——三個都顧到，治理才算完整。
+    </p>
+
+    <h3 style="margin-top: 1.8rem">院內活體案例 · 奇美負責任智慧透析腎態圈</h3>
+    <div class="case">
+      <p class="inscr">
+        2026 鼎革獎 · AI 創新應用獎（醫療機構組 — 醫學中心）決選報告
+      </p>
+      <h3 style="margin-top: 0.6rem">雙 AI 模型 × 三層治理 × 閉環改善</h3>
+      <p class="claim" style="margin-top: 0.6rem; font-size: 0.95rem">
+        兩個模型（<b>透析中低血壓 IDH AI</b>、<b>瘻管阻塞 AI</b
+        >）都不是停在「跳出一個警示」，而是把風險分級接到 SOP
+        介入、再接回效能監測與模型再訓練—— 警示 → 誰看 → 誰決策 → 誰執行 →
+        回頭驗證，這五段在設計上都被指定了負責角色與後續動作。
+        透明性以九大指標為框架逐項檢視，模型效能逐年追蹤；臨床效益標準由腎臟科訂定（AUC
+        ≥ 0.8、IDH 發生率 ≤ 10%），並以三個月為期評估。
+      </p>
+      <div class="metrics">
+        <div class="metric">
+          <b>26.1% → 4.7%</b
+          ><span
+            >透析中低血壓（IDH）發生率，2020 → 2026.6；↓82%，P &lt; 0.001</span
+          >
+        </div>
+        <div class="metric">
+          <b>0.29% → 0.12%</b><span>瘻管阻塞率（2–5 月同期比較）</span>
+        </div>
+        <div class="metric"><b>0.871</b><span>IDH AI 最新年度 AUC</span></div>
+      </div>
+      <div class="scroll-x" tabindex="0" role="region" aria-label="IDH AI 模型效能逐年監測表">
+        <table>
+          <caption>
+            IDH AI 生命週期管理：模型效能逐年監測
+          </caption>
+          <thead>
+            <tr>
+              <th>Data period</th>
+              <th>Accuracy</th>
+              <th>Sensitivity</th>
+              <th>Specificity</th>
+              <th>AUC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2023</td>
+              <td>0.861</td>
+              <td>0.684</td>
+              <td>0.872</td>
+              <td>0.864</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td>0.770</td>
+              <td>0.782</td>
+              <td>0.770</td>
+              <td>0.853</td>
+            </tr>
+            <tr>
+              <td>2025</td>
+              <td>0.792</td>
+              <td>0.788</td>
+              <td>0.792</td>
+              <td>0.871</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p
+        style="
+          margin-top: 0.9rem;
+          font-size: 0.82rem;
+          color: var(--faint);
+          font-weight: 300;
+        "
+      >
+        瘻管阻塞為上線 5 個月之初步監測訊號，將持續追蹤並以院際驗證確認。IDH =
+        intradialytic hypotension。
+      </p>
+
+      <h4 style="margin-top: 1.8rem">外部驗證：這一格是我們自己的照妖鏡</h4>
+      <div class="duet" style="margin-top: 0.8rem">
+        <div class="voice phron">
+          <span class="part">已完成跨院驗證</span>
+          <h3>透析中低血壓 IDH AI</h3>
+          <ul>
+            <li>內部（院內資料）AUC <b>0.936</b></li>
+            <li>外部（高醫資料）AUC <b>0.905</b></li>
+            <li>演算法 XGBoost；高醫已完成外部驗證</li>
+          </ul>
+        </div>
+        <div class="voice neutral">
+          <span class="part">尚未完成</span>
+          <h3>瘻管阻塞 AI</h3>
+          <ul>
+            <li>內部（院內資料）AUC <b>0.820</b></li>
+            <li>演算法 Voting（多模型整合）</li>
+            <li>已向台灣智慧醫療聯盟（TSHA）申請外部驗證，進行中</li>
+          </ul>
+        </div>
+      </div>
+      <p class="gloss mark" style="margin-top: 1rem">
+        樂章四開頭那個敗血症模型，錯的不是技術，是<strong>沒被獨立驗證就接上臨床</strong>。所以這一格必須誠實寫：一個已經跨院驗證過，另一個還沒有。<strong>會寫出「還沒有」的那一欄，才是治理。</strong>
+      </p>
+
+      <h4 style="margin-top: 1.8rem">回到樂章二：省下的時間，真的還給了人嗎</h4>
+      <div class="ladder wide" style="flex-direction: column; margin-top: 0.8rem">
+        <div class="rung">
+          <span class="lv">50→29%</span><span class="nm">每班處理 ≥3 次低血壓者</span
+          ><span class="ds">↓ 21 個百分點</span>
+        </div>
+        <div class="rung">
+          <span class="lv">59.7→20.7%</span><span class="nm">每次透析掉壓 &gt;2 次</span
+          ><span class="ds">↓ 38.9 個百分點</span>
+        </div>
+        <div class="rung">
+          <span class="lv">34.5→93.1%</span><span class="nm">脫水達標率</span
+          ><span class="ds">↑ 58.6 個百分點</span>
+        </div>
+        <div class="rung">
+          <span class="lv">115→92 天</span><span class="nm">每年照護時間成本</span
+          ><span class="ds">省約 23 天／年 ≒ 1.1 名護理人力；加班成本約降 13.95 萬元／年</span>
+        </div>
+      </div>
+      <p class="gloss" style="margin-top: 1rem">
+        這是樂章二那個問題唯一能用院內資料回答的地方：<strong>AI 不是讓護理師更忙，是把時間還回去。</strong>省下的 23 天，才是「疊加」與「重新連線」的真正分界。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== V ===== -->
+<div class="stave" aria-hidden="true">
+  <span class="head" style="--y: 16px"></span
+  ><span class="stem" style="--y: 16px"></span><span class="num">V</span>
+</div>
+<section class="mv" id="m5">
+  <div class="wrap stack">
+    <div class="mv-head">
+      <span class="greek">παιδεία</span>
+      <span class="translit">paideía · 一個人的養成</span>
+      <p class="tempo">Finale — con fuoco</p>
+      <h2 style="margin-top: 0.5rem">認知翻轉，只能靠領導先發生</h2>
+      <p class="claim">
+        前面四個樂章，每一步都要有人先「決定」去做。領導不是第五件事——它是讓前面四件事發生的那個開關。
+      </p>
+    </div>
+
+    <blockquote
+      class="center"
+      style="
+        font-family: var(--class);
+        font-size: clamp(1.6rem, 4.4vw, 2.3rem);
+        font-weight: 400;
+      "
+    >
+      You can’t lead AI from the sidelines.
+      <footer>—— McKinsey</footer>
+    </blockquote>
+
+    <h3 style="margin-top: 1.8rem">高層親自扛，數字就不一樣</h3>
+    <div class="figures">
+      <div class="fig">
+        <b>7.4×</b
+        ><span>主管積極支持時，員工覺得「AI 讓我更能發揮」的機率</span>
+      </div>
+      <div class="fig">
+        <b>&lt;⅓</b><span>員工真的感受到主管在支持這件事</span>
+      </div>
+      <div class="fig">
+        <b>3×</b><span>拿到價值的組織，高層親自扛的機率</span>
+      </div>
+    </div>
+    <p class="gloss mark">
+      <strong>79%</strong> 說轉型是第一優先，但 <strong>89%</strong> 的 AI
+      投資不到整體預算的
+      25%。這種矛盾，讓同仁根本不知道「真正被期待的」長什麼樣。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">管理讓工具進來，領導讓認知改變</h3>
+    <div class="duet">
+      <div class="voice techne">
+        <span class="part">管理</span>
+        <h3>AI 導入</h3>
+        <ul>
+          <li>採購、上線、教育訓練</li>
+          <li>算省了幾分鐘</li>
+          <li>讓「工具」進來</li>
+        </ul>
+      </div>
+      <div class="voice phron">
+        <span class="part">領導</span>
+        <h3>認知翻轉</h3>
+        <ul>
+          <li>有人用不同的方式思考</li>
+          <li>然後做給別人看</li>
+          <li>讓「認知」改變</li>
+        </ul>
+      </div>
+    </div>
+    <p class="gloss">
+      我們不缺管理；我們缺的，是有人站到場中央，<strong>示範一種新的思考</strong>。
+    </p>
+
+    <blockquote style="margin-top: 1.6rem">
+      你怎麼用 AI，住院醫師在看；你怎麼保留判斷，他們更在看。
+      <footer>
+        如果一個主治把思考外包給
+        AI、照單全收，他影響的不是一份病歷——而是一整個世代。你只要示範一次「我先自己想過，再看
+        AI 怎麼說」，那就是最好的一堂課。
+      </footer>
+    </blockquote>
+
+    <h3 style="margin-top: 1.6rem">半人馬：人判斷，AI 執行</h3>
+    <div class="duet">
+      <div class="voice phron">
+        <span class="part">上半身 · φρόνησις</span>
+        <h3>人</h3>
+        <ul>
+          <li>判斷 · 決策 · 指方向</li>
+          <li>留在人這邊</li>
+        </ul>
+      </div>
+      <div class="voice techne">
+        <span class="part">下半身 · τέχνη</span>
+        <h3>AI</h3>
+        <ul>
+          <li>執行 · 出力氣</li>
+          <li>大方交給它</li>
+        </ul>
+      </div>
+    </div>
+    <p class="gloss">
+      西洋棋界很早就發現：最強的不是最強的人，也不是最強的
+      AI，而是「人＋AI」。我們要養的，不是「跑得比 AI 快的人」，是<strong
+        >「騎得動 AI 的人」</strong
+      >。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">從 I 型，到騎得動 AI 的 M 型</h3>
+    <div class="tiles">
+      <div class="tile">
+        <h4>I 型</h4>
+        <p>一根很深的專業</p>
+      </div>
+      <div class="tile">
+        <h4>T 型</h4>
+        <p>一根深，加跨領域的廣</p>
+      </div>
+      <div class="tile">
+        <h4>M 型</h4>
+        <p>好幾根深支柱撐起的人</p>
+      </div>
+    </div>
+    <p class="gloss">
+      四種力，重量正在移動：<strong style="color: var(--bronze)"
+        >判斷力、策略力、領導力</strong
+      >要自己長出來，也要在住院醫師身上刻意培育；<strong
+        style="color: var(--aegean)"
+        >執行力</strong
+      >交給 AI。
+    </p>
+
+    <h3 style="margin-top: 1.6rem">你不只是 AI 的使用者，你是示範</h3>
+    <div class="beads">
+      <span class="bead">用 AI，又保留自己的判斷</span>
+      <span class="bead">坦承「我不知道，我們一起查」</span>
+      <span class="bead">對 AI 的產出有品質要求，不照單全收</span>
+      <span class="bead">通報、不隱匿</span>
+      <span class="bead">保護同仁的整合期，不硬塞新系統</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 行動 ===== -->
+<div class="stave" aria-hidden="true">
+  <span class="head hollow" style="--y: 32px"></span
+  ><span class="stem" style="--y: 32px"></span><span class="num">Coda</span
+  ><span class="fin"></span>
+</div>
+<section id="action">
+  <div class="wrap stack">
+    <p class="inscr">Coda · 下週能做的一件事</p>
+    <h2>各職類，各挑一件</h2>
+    <p class="claim">選你的職類，只看你那一條。</p>
+
+    <div class="roles" role="group" aria-label="選擇職類">
+      <button type="button" data-role="all" aria-pressed="true">全部</button>
+      <button type="button" data-role="doctor" aria-pressed="false">
+        醫師
+      </button>
+      <button type="button" data-role="nurse" aria-pressed="false">護理</button>
+      <button type="button" data-role="tech" aria-pressed="false">
+        醫技／藥師
+      </button>
+      <button type="button" data-role="admin" aria-pressed="false">
+        行政／資訊
+      </button>
+      <button type="button" data-role="lead" aria-pressed="false">主管</button>
+    </div>
+
+    <ul class="todo">
+      <li data-role="doctor">
+        <span class="who">醫師</span
+        ><span class="what"
+          >挑一個你最常用 AI
+          的情境，刻意練習「先自己想過，再看它怎麼說」。</span
+        >
+      </li>
+      <li data-role="nurse">
+        <span class="who">護理</span
+        ><span class="what"
+          >記下這週哪個 AI
+          警示最常讓你「已讀不理」——那就是該被重新設計的疊加點。</span
+        >
+      </li>
+      <li data-role="tech">
+        <span class="who">醫技／藥師</span
+        ><span class="what"
+          >找出一個你每天重複三次以上的動作，問「這個流程存在的目的是什麼」。</span
+        >
+      </li>
+      <li data-role="admin">
+        <span class="who">行政／資訊</span
+        ><span class="what"
+          >開始建那份 AI 清單。從你負責的系統開始，一行也好。</span
+        >
+      </li>
+      <li data-role="lead">
+        <span class="who">主管</span
+        ><span class="what"
+          >上任何新系統前先問一句——我有沒有給同仁「整合期」？</span
+        >
+      </li>
+    </ul>
+
+    <p class="gloss mark">
+      <strong>一個流程，三句話：</strong>目的是什麼？AI
+      能做掉多少？剩下的，我該放哪？
+    </p>
+  </div>
+</section>
+
+<!-- ===== 終曲 ===== -->
+<section id="coda">
+  <div class="wrap stack">
+    <p class="hgreek" style="text-align: center">ΑΛΗΘΕΙΑ</p>
+    <p class="inscr" style="text-align: center">
+      alḗtheia · 去蔽——把遮住的東西拿開
+    </p>
+    <blockquote class="center" style="margin-top: 1.4rem">
+      在這個令人深思的時代，最令人深思的事，是我們仍然沒有在思考。
+      <footer>
+        海德格爾，1951。七十五年後，AI 讓這句話變得無法迴避。因為 AI
+        真正逼問我們的，從來不是「它會不會取代我」，而是——當它越來越會模擬思考的樣子，我們自己，還在不在思考？
+      </footer>
+    </blockquote>
+    <blockquote class="center" style="margin-top: 2rem">
+      別把你的名片，當成你自己。
+      <footer>
+        演算法的成本，會像水電一樣越來越便宜；真正不會被拉平、無法被複製的，是你的判斷。把
+        AI 該做的，交給它。然後，把省下的時間跟腦力，還給那些，只有你能做的事。
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===== 出處 ===== -->
+<section id="refs">
+  <div class="wrap stack">
+    <p class="inscr">Fontes · 出處</p>
+    <ol>
+      <li>MIT NANDA.《State of AI in Business 2025》。</li>
+      <li>Gallup.《State of the Global Workplace 2026》。</li>
+      <li>McKinsey（2026）.〈The operating model advantage〉。</li>
+      <li>
+        McKinsey.《Rewired 2.0》（2026/04）：分析 200＋ 企業級技術與 AI
+        轉型案例。
+      </li>
+      <li>McKinsey.〈Designing for the cognitive cost of change〉。</li>
+      <li>McKinsey；星展銀行（DBS）案例。</li>
+      <li>
+        Scharmer O. Leadership’s Blind Spot in the Age of AI.
+        <i>MIT Sloan Manag Rev.</i> 2026 Jul.
+      </li>
+      <li>《Nature》科學家調查。</li>
+      <li>
+        UK ICO ruling, 2017/07（Royal Free NHS Foundation Trust × DeepMind,
+        Streams）。
+      </li>
+      <li>
+        <i>JAMA Intern Med.</i>
+        2021;181(8):1065-1070（外部驗證之敗血症預警模型）。
+      </li>
+      <li>
+        Wade M, Wirtz J. Responsible AI Is Becoming a Growth Strategy.
+        <i>Harv Bus Rev.</i> 2026 Jul 21.
+      </li>
+      <li>EU AI Act（醫療列為高風險 AI 系統，high-risk）。</li>
+      <li>
+        Deloitte.《Global Technology Leadership Study 2026》（660＋
+        位科技高層）。
+      </li>
+      <li>
+        院內數據：2026 鼎革獎 AI
+        創新應用獎決選報告〈從預測、影響到治理：奇美負責任智慧透析腎態圈〉。
+      </li>
+      <li>
+        柏拉圖《理想國》第七卷「洞穴喻」；亞里斯多德《尼各馬科倫理學》第六卷
+        τέχνη／φρόνησις 之別。
+      </li>
+    </ol>
+  </div>
+</section>
+
+<footer class="end">
+  <div class="wrap">
+    楊翼寧　│　奇美醫院 腎臟科　│　inyang5036@gmail.com<br />
+    2026 / 10 奇美醫院教學部師培中心 CFD 課程 · 聽眾帶走版
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var KEY = "cfd-ai-role";
+    var btns = [].slice.call(document.querySelectorAll(".roles button"));
+    var items = [].slice.call(document.querySelectorAll(".todo li"));
+    function apply(role) {
+      btns.forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b.dataset.role === role));
+      });
+      items.forEach(function (li) {
+        li.hidden = role !== "all" && li.dataset.role !== role;
+      });
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        apply(b.dataset.role);
+        try {
+          localStorage.setItem(KEY, b.dataset.role);
+        } catch (e) {}
+      });
+    });
+    var saved = "all";
+    try {
+      saved = localStorage.getItem(KEY) || "all";
+    } catch (e) {}
+    if (
+      !btns.some(function (b) {
+        return b.dataset.role === saved;
+      })
+    )
+      saved = "all";
+    apply(saved);
+  })();
+</script>
