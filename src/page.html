@@ -928,6 +928,32 @@
     margin-bottom: 1rem;
   }
 
+  /* ============ 文中引註 ============ */
+  .cite {
+    font-size: 0.62em;
+    line-height: 0;
+    vertical-align: super;
+    margin-inline-start: 0.15em;
+    white-space: nowrap;
+    font-variant-numeric: lining-nums;
+  }
+  .cite a {
+    color: var(--aegean);
+    text-decoration: none;
+    padding: 0 0.08em;
+  }
+  .cite a:hover {
+    text-decoration: underline;
+  }
+  #refs li {
+    scroll-margin-top: 5rem;
+    transition: background 0.3s ease;
+  }
+  #refs li:target {
+    background: var(--bronze-soft);
+    outline: 0.35rem solid var(--bronze-soft);
+  }
+
   /* ============ 出處 ============ */
   #refs {
     font-size: 0.87rem;
@@ -1035,7 +1061,7 @@
     <p class="gloss">
       工具買了、系統上了、訓練也跑了。日常，沒有變。<strong
         >這是預設結局。</strong
-      >
+      ><sup class="cite"><a href="#ref1">1</a>、<a href="#ref2">2</a></sup>
     </p>
 
     <blockquote style="margin-top: 1.6rem">
@@ -1098,7 +1124,7 @@
       全篇的兩個聲部：<span class="greek">τέχνη</span>（téchnē，技藝與工具）與
       <span class="greek">φρόνησις</span
       >（phrónēsis，實踐智慧——床邊那個「該怎麼做」的判斷）。
-      每一章都是這兩個聲部在對位——收在
+      每一章都是這兩個聲部在對位<sup class="cite"><a href="#ref15">15</a></sup>——收在
       <span class="greek">πρᾶξις</span
       >（prâxis，付諸實行）：判斷若沒走成動作，就還停在牆上。
     </p>
@@ -1120,7 +1146,7 @@
       <p class="claim">
         部署的人很多，拿到成效的很少。差距不在技術本身，在於組織的<b
           >運作模型（operating model）</b
-        >有沒有跟著改變。
+        >有沒有跟著改變。<sup class="cite"><a href="#ref3">3</a></sup>
       </p>
     </div>
 
@@ -1156,7 +1182,7 @@
       </div>
     </div>
     <p class="gloss">
-      成功轉型的組織 EBITDA 可提升約
+      成功轉型的組織<sup class="cite"><a href="#ref4">4</a></sup> EBITDA 可提升約
       <strong>20%</strong>——代價是運作方式必須從根本改變。
     </p>
 
@@ -1181,7 +1207,7 @@
       </footer>
     </blockquote>
 
-    <h3 style="margin-top: 1.6rem">成功轉型的六大能力：只有兩項是技術</h3>
+    <h3 style="margin-top: 1.6rem">成功轉型的六大能力：只有兩項是技術<sup class="cite"><a href="#ref4">4</a></sup></h3>
     <div class="duet">
       <div class="voice techne">
         <span class="part">τέχνη · 兩項</span>
@@ -1205,7 +1231,9 @@
 
     <p class="gloss">
       <strong>真正的護城河不是工具，是學得比對手快。</strong
-      >星展銀行（DBS）在生成式 AI 爆紅之前好幾年，就持續投入基礎能力，浪來了它跑得動，做出可驗證的 AI
+      ><sup class="cite"><a href="#ref6">6</a></sup>
+      星展銀行（DBS）在生成式 AI
+      爆紅之前好幾年，就持續投入基礎能力，浪來了它跑得動，做出可驗證的 AI
       效益。當每個人都用得到同一個模型，工具就不再是差異——差異是學習速度，而且它會複利。
     </p>
   </div>
@@ -1225,18 +1253,18 @@
       <h2 style="margin-top: 0.5rem">認知成本</h2>
       <p class="claim">
         別用 AI 累垮你最需要的人。<b>65%</b> 的員工說 AI
-        對「個人效率」有某種或極高程度的幫助，組織整體卻沒有看到等比例的效益。
+        對「個人效率」有某種或極高程度的幫助，組織整體卻沒有看到等比例的效益。<sup class="cite"><a href="#ref2">2</a></sup>
       </p>
     </div>
 
     <p class="gloss">
       AI 讓個人變快，不會自動讓組織變好。因為組織是一個系統——<strong
         >系統本身若是亂的，AI 只會讓混亂跑得更快。</strong
-      >
+      ><sup class="cite"><a href="#ref5">5</a></sup>
     </p>
 
     <h3 style="margin-top: 1.6rem">
-      四件事同時壓上來，被侵蝕的是「最好的思考」
+      四件事同時壓上來，被侵蝕的是「最好的思考」<sup class="cite"><a href="#ref5">5</a></sup>
     </h3>
     <div class="duet">
       <div class="voice techne">
@@ -1308,7 +1336,7 @@
       <h2 style="margin-top: 0.5rem">AI 到不了的那一哩</h2>
       <p class="claim">
         床邊的深層感知，是我們的主場。把注意力、預算、人才全押在 AI
-        上，就是在種一片<b>單一作物</b>的田——短期效率很高，一場病蟲害就能讓整片田消失。
+        上，就是在種一片<b>單一作物</b>的田——短期效率很高，一場病蟲害就能讓整片田消失。<sup class="cite"><a href="#ref7">7</a></sup>
       </p>
     </div>
 
@@ -1317,7 +1345,7 @@
       替我們想。這是一個會自己轉下去的迴圈。
     </p>
 
-    <h3 style="margin-top: 1.6rem">一道階梯，最後一哩是人的</h3>
+    <h3 style="margin-top: 1.6rem">一道階梯，最後一哩是人的<sup class="cite"><a href="#ref7">7</a></sup></h3>
     <div class="ladder">
       <div class="rung">
         <span class="lv">1.0</span><span class="nm">自動化</span
@@ -1350,7 +1378,7 @@
       </footer>
     </blockquote>
 
-    <h3 style="margin-top: 1.8rem">柏拉圖的洞穴，重新出現在醫療現場</h3>
+    <h3 style="margin-top: 1.8rem">柏拉圖的洞穴，重新出現在醫療現場<sup class="cite"><a href="#ref7">7</a>、<a href="#ref15">15</a></sup></h3>
     <figure>
       <svg
         class="cave"
@@ -1431,7 +1459,7 @@
     </p>
 
     <h3 style="margin-top: 1.6rem">
-      回到序曲那個問題：科學家最不願意交給 AI 的四件事
+      回到序曲那個問題：科學家最不願意交給 AI 的四件事<sup class="cite"><a href="#ref8">8</a></sup>
     </h3>
     <div class="beads">
       <span class="bead">I　思考的過程</span
@@ -1445,7 +1473,7 @@
       >
     </p>
 
-    <h3 style="margin-top: 1.6rem">買 AI 的預算表旁邊，要有另一欄</h3>
+    <h3 style="margin-top: 1.6rem">買 AI 的預算表旁邊，要有另一欄<sup class="cite"><a href="#ref7">7</a></sup></h3>
     <div class="duet">
       <div class="voice techne">
         <span class="part">填得很滿</span>
@@ -1490,7 +1518,7 @@
       </p>
     </div>
 
-    <h3>案例一 · Royal Free × DeepMind：一支 AKI 警示 app，倒在治理上</h3>
+    <h3>案例一 · Royal Free × DeepMind：一支 AKI 警示 app，倒在治理上<sup class="cite"><a href="#ref9">9</a></sup></h3>
     <div class="ladder" style="flex-direction: column; margin-top: 0.6rem">
       <div class="rung">
         <span class="lv">01</span><span class="nm">Streams</span
@@ -1512,7 +1540,7 @@
     </p>
 
     <h3 style="margin-top: 1.6rem">
-      案例二 · 回到那個敗血症警示：沒被獨立驗證，就接上臨床
+      案例二 · 回到那個敗血症警示：沒被獨立驗證，就接上臨床<sup class="cite"><a href="#ref10">10</a></sup>
     </h3>
     <div class="figures">
       <div class="fig"><b>33%</b><span>敏感度 sensitivity</span></div>
@@ -1523,7 +1551,7 @@
       被數百家醫院採用的模型，實測結果遠低於廠商宣稱的水準。不只沒接住該接的病人，還製造一大堆假警報——<strong>警示疲勞</strong>。
     </p>
 
-    <h3 style="margin-top: 1.6rem">信任會複利，失去也會</h3>
+    <h3 style="margin-top: 1.6rem">信任會複利，失去也會<sup class="cite"><a href="#ref11">11</a></sup></h3>
     <div class="duet">
       <div class="voice phron">
         <span class="part">正向</span>
@@ -1545,7 +1573,7 @@
       </div>
     </div>
 
-    <h3 style="margin-top: 1.6rem">歐盟 AI 法案：醫療＝高風險</h3>
+    <h3 style="margin-top: 1.6rem">歐盟 AI 法案：醫療＝高風險<sup class="cite"><a href="#ref12">12</a></sup></h3>
     <div class="beads">
       <span class="bead">風險管理</span><span class="bead">資料品質</span
       ><span class="bead">紀錄追蹤</span><span class="bead">技術文件</span>
@@ -1559,7 +1587,7 @@
       >
     </p>
 
-    <h3 style="margin-top: 1.6rem">哈佛三階段手冊（順序不能跳）</h3>
+    <h3 style="margin-top: 1.6rem">哈佛三階段手冊（順序不能跳）<sup class="cite"><a href="#ref11">11</a></sup></h3>
     <div class="tiles">
       <div class="tile">
         <span class="ord">I</span>
@@ -1581,7 +1609,7 @@
       信任有三個面向：<strong>病人、同仁、主管機關</strong>——三個都顧到，治理才算完整。
     </p>
 
-    <h3 style="margin-top: 1.8rem">院內活體案例 · 奇美負責任智慧透析腎態圈</h3>
+    <h3 style="margin-top: 1.8rem">院內活體案例 · 奇美負責任智慧透析腎態圈<sup class="cite"><a href="#ref14">14</a></sup></h3>
     <div class="case">
       <p class="inscr">
         2026 鼎革獎 · AI 創新應用獎（醫療機構組 — 醫學中心）決選報告
@@ -1738,7 +1766,7 @@
       <footer>—— McKinsey</footer>
     </blockquote>
 
-    <h3 style="margin-top: 1.8rem">高層親自扛，數字就不一樣</h3>
+    <h3 style="margin-top: 1.8rem">高層親自扛，數字就不一樣<sup class="cite"><a href="#ref2">2</a>、<a href="#ref13">13</a></sup></h3>
     <div class="figures">
       <div class="fig">
         <b>7.4×</b
@@ -1950,42 +1978,42 @@
   <div class="wrap stack">
     <p class="inscr">Fontes · 出處</p>
     <ol>
-      <li>MIT NANDA.《State of AI in Business 2025》。</li>
-      <li>Gallup.《State of the Global Workplace 2026》。</li>
-      <li>McKinsey（2026）.〈The operating model advantage〉。</li>
-      <li>
+      <li id="ref1">MIT NANDA.《State of AI in Business 2025》。</li>
+      <li id="ref2">Gallup.《State of the Global Workplace 2026》。</li>
+      <li id="ref3">McKinsey（2026）.〈The operating model advantage〉。</li>
+      <li id="ref4">
         McKinsey.《Rewired 2.0》（2026/04）：分析 200＋ 企業級技術與 AI
         轉型案例。
       </li>
-      <li>McKinsey.〈Designing for the cognitive cost of change〉。</li>
-      <li>McKinsey；星展銀行（DBS）案例。</li>
-      <li>
+      <li id="ref5">McKinsey.〈Designing for the cognitive cost of change〉。</li>
+      <li id="ref6">McKinsey；星展銀行（DBS）案例。</li>
+      <li id="ref7">
         Scharmer O. Leadership’s Blind Spot in the Age of AI.
         <i>MIT Sloan Manag Rev.</i> 2026 Jul.
       </li>
-      <li>《Nature》科學家調查。</li>
-      <li>
+      <li id="ref8">《Nature》科學家調查。</li>
+      <li id="ref9">
         UK ICO ruling, 2017/07（Royal Free NHS Foundation Trust × DeepMind,
         Streams）。
       </li>
-      <li>
+      <li id="ref10">
         <i>JAMA Intern Med.</i>
         2021;181(8):1065-1070（外部驗證之敗血症預警模型）。
       </li>
-      <li>
+      <li id="ref11">
         Wade M, Wirtz J. Responsible AI Is Becoming a Growth Strategy.
         <i>Harv Bus Rev.</i> 2026 Jul 21.
       </li>
-      <li>EU AI Act（醫療列為高風險 AI 系統，high-risk）。</li>
-      <li>
+      <li id="ref12">EU AI Act（醫療列為高風險 AI 系統，high-risk）。</li>
+      <li id="ref13">
         Deloitte.《Global Technology Leadership Study 2026》（660＋
         位科技高層）。
       </li>
-      <li>
+      <li id="ref14">
         院內數據：2026 鼎革獎 AI
         創新應用獎決選報告〈從預測、影響到治理：奇美負責任智慧透析腎態圈〉。
       </li>
-      <li>
+      <li id="ref15">
         柏拉圖《理想國》第七卷「洞穴喻」；亞里斯多德《尼各馬科倫理學》第六卷
         τέχνη／φρόνησις 之別。
       </li>
