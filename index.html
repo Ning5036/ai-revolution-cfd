@@ -1099,7 +1099,7 @@
 <section>
   <div class="wrap stack">
     <p class="inscr">Programma · 節目單</p>
-    <h2>五個樂章，拆掉一個叫「疊加」的預設</h2>
+    <h2>五個樂章，拆掉一座叫「疊加」的高牆</h2>
     <div class="tiles" style="margin-top: 0.6rem">
       <a class="tile" href="#m1" style="text-decoration: none; color: inherit">
         <span class="ord">I · μεταμόρφωσις</span>
@@ -1136,14 +1136,6 @@
         <p>屬於你的樂章</p></a
       >
     </div>
-    <p class="gloss">
-      全篇的兩個聲部：<span class="greek">τέχνη</span>（téchnē，技藝與工具）與
-      <span class="greek">φρόνησις</span
-      >（phrónēsis，實踐智慧——床邊那個「該怎麼做」的判斷）。
-      每一章都是這兩個聲部在對位<sup class="cite"><a href="#ref15">15</a></sup>——收在
-      <span class="greek">πρᾶξις</span
-      >（prâxis，付諸實行）：判斷若沒走成動作，就還停在牆上。
-    </p>
   </div>
 </section>
 
@@ -1160,8 +1152,8 @@
       <p class="tempo">Allegro risoluto</p>
       <h2 style="margin-top: 0.5rem">疊加 ≠ 轉型</h2>
       <p class="claim">
-        部署的人很多，拿到成效的很少。差距不在技術本身，在於組織的<b
-          >運作模型（operating model）</b
+        AI 上線的醫院很多，病人真的有因此變更好嗎？放眼各行各業，部署 AI 的很多，拿到成效的很少。差距不在技術本身，在於組織的<b
+          >運作思維</b
         >有沒有跟著改變。<sup class="cite"><a href="#ref3">3</a></sup>
       </p>
     </div>
@@ -1219,7 +1211,68 @@
       30%，人應該把力氣放在哪裡？
       <footer>
         Ambient 病歷幫你做掉 70%
-        的文書——然後呢？是把省下的時間，還給病人：多問一句、多解釋一段、多看他一眼。
+        的文書——然後呢？是把省下的時間，還給病人。
+      </footer>
+    </blockquote>
+
+    <h3 style="margin-top: 1.6rem">流程重置：回到沒有高牆的那一天</h3>
+    <p class="gloss">
+      系統上線了。但<strong>人還是那些人，步驟還是那些步驟</strong>。很多醫院，就停在這裡——這叫疊加。而重置，大致是這樣走的：
+    </p>
+    <div class="ladder" style="flex-direction: column">
+      <div class="rung">
+        <span class="lv">01</span><span class="nm">臨床問題</span
+        ><span class="ds">從一個真的痛的臨床問題開始，先把現在的樣子量下來。沒有基線，就說不出後來有沒有更好。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">02</span><span class="nm">定義價值</span
+        ><span class="ds">醫院的價值，不只是 ROI。病人有沒有更安全、照護有沒有更好、省下的時間有沒有還給病人——先想清楚要的是哪一個。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">03</span><span class="nm">資料與知識治理</span
+        ><span class="ds">病歷除了照護，也為申報與法律留存而寫——它記下的是照護的過程，不等於病人真實的狀態；指引、共識與醫院自己的流程，也常各說各話。資料和知識，都要有負責人、版本與有效期限。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">04</span><span class="nm">模型</span
+        ><span class="ds">在別處表現好的模型，換一群病人，就可能失準。<sup class="cite"><a href="#ref10">10</a></sup>上線前先在地驗證，也看看哪些病人，被它看漏了。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">05</span><span class="nm">流程重新設計與整合</span
+        ><span class="ds">疊加與重置，在這裡分岔。把 AI 的輸出放進臨床人員本來就會看的地方，再把誰看、誰決策、誰執行，寫進流程。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">06</span><span class="nm">資安治理</span
+        ><span class="ds">病人資料能不能離開院內、存在哪裡、誰能看、出了事誰負責——上線前就設計進去，不是事後補。它不只在這一站，從第一步起就要在場。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">07</span><span class="nm">人的監督</span
+        ><span class="ds">人來確認，不能只是蓋章。要設計成能抵抗「機器說的，大概沒錯」的慣性；高風險的決定，留給人。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">08</span><span class="nm">持續監測</span
+        ><span class="ds">模型會隨時間漂移，而且常常無聲無息。上線之後要有人接手，看準確度、看病安事件——計畫結案了，也不能停。</span>
+      </div>
+      <div class="rung">
+        <span class="lv">09</span><span class="nm">病人預後</span
+        ><span class="ds">不量使用率，量病人：有沒有更早被接住，有沒有少受一次傷害。再帶著答案回到第一步——或者，誠實地把它關掉。</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 1.6rem">試辦與價值之間，有一道懸崖</h3>
+    <div class="beads">
+      <span class="bead">一個病房試辦</span
+      ><span class="bead">寫進常規作業</span
+      ><span class="bead">跨科推廣</span
+      ><span class="bead">成為照護標準</span>
+    </div>
+    <p class="gloss mark">
+      很多醫院的 AI，停在一個病房、一位熱心主治的手上。計畫結案，人一調走，它就停了。擋住它的很少是模型，多半是 HIS 的介面、跨科的權責，還有上線之後，沒人接手的維護。
+    </p>
+
+    <blockquote style="margin-top: 1.6rem">
+      模型，決定 AI 能做什麼；資料、流程、系統整合與治理，決定它能不能讓病人更好。
+      <footer>
+        所以這張流程圖，不能只交給資訊室來畫。醫師、護理、醫技、藥師、品管、行政，要坐在同一張桌子前，一筆一筆重畫。
       </footer>
     </blockquote>
 
@@ -1246,11 +1299,9 @@
     </div>
 
     <p class="gloss">
-      <strong>真正的護城河不是工具，是學得比對手快。</strong
-      ><sup class="cite"><a href="#ref6">6</a></sup>
-      星展銀行（DBS）在生成式 AI
-      爆紅之前好幾年，就持續投入基礎能力，浪來了它跑得動，做出可驗證的 AI
-      效益。當每個人都用得到同一個模型，工具就不再是差異——差異是學習速度，而且它會複利。
+      <strong>真正的護城河不是工具，是學得比別人快。</strong
+      ><sup class="cite"><a href="#ref3">3</a></sup>
+      當每家醫院都用得到同一個模型，差異就在學習的速度。資料治理、流程盤點、懂臨床又懂資料的人，都得在浪來之前開始存<sup class="cite"><a href="#ref6">6</a></sup>——而且它會複利。
     </p>
   </div>
 </section>
@@ -1313,8 +1364,7 @@
       <footer>對一個醫師、一個護理師來說，判斷力下降，是會出事的。</footer>
     </blockquote>
 
-    <h3 style="margin-top: 1.6rem">給主管的一件正式領導工作</h3>
-    <div class="duet">
+    <div class="duet" style="margin-top: 1.6rem">
       <div class="voice techne">
         <span class="part">Phase I</span>
         <h3>執行期</h3>
@@ -1335,6 +1385,7 @@
     <p class="gloss mark">
       很多組織的問題，是把整個轉型設計成一個<strong>永無止盡的執行期</strong>——每一季都有新系統要學，大家永遠停在「新手模式」，永遠進不了能發揮深度判斷的狀態。
     </p>
+
   </div>
 </section>
 
@@ -1351,8 +1402,8 @@
       <p class="tempo">Andante contemplativo</p>
       <h2 style="margin-top: 0.5rem">AI 到不了的那一哩</h2>
       <p class="claim">
-        床邊的深層感知，是我們的主場。把注意力、預算、人才全押在 AI
-        上，就是在種一片<b>單一作物</b>的田——短期效率很高，一場病蟲害就能讓整片田消失。<sup class="cite"><a href="#ref7">7</a></sup>
+        病人照護過程的深層感知，是我們的主場。把注意力、預算、人才全押在 AI
+        上，就是在種一片<b>單一作物</b>的田——短期效率可能會提高，但一場蟲害就能讓整片田消失。<sup class="cite"><a href="#ref7">7</a></sup>
       </p>
     </div>
 
