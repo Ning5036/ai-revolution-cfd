@@ -440,6 +440,17 @@
   }
 
   /* ============ 引語 ============ */
+  /* 避免最後一行只剩一兩個字：引言與標題平均分行，內文避免孤字 */
+  blockquote, h2, h3, h4, .tile p, .inscr, li, .ds, footer.end .wrap div {
+    text-wrap: balance;
+  }
+  p, footer {
+    text-wrap: pretty;
+  }
+  /* 只在片語之間換行 */
+  .phrase {
+    display: inline-block;
+  }
   blockquote {
     margin: 0;
     max-width: var(--measure);
@@ -1857,7 +1868,7 @@
     </p>
 
     <blockquote style="margin-top: 1.6rem">
-      你怎麼用 AI，學生在看；你怎麼保留判斷，他們更在看。
+      <span class="phrase">你怎麼用 AI，學生在看；</span><span class="phrase">你怎麼保留判斷，他們更在看。</span>
       <footer>
         你只要示範一次「我先自己想過，再看
         AI 怎麼說」，那就是最好的一堂課。
@@ -2004,8 +2015,7 @@
     <blockquote class="center" style="margin-top: 1.4rem">
       在這個令人深思的時代，最令人深思的事，是我們仍然沒有在思考。
       <footer>
-        海德格爾，1951。七十五年後，AI 讓這句話變得無法迴避。因為 AI
-        真正逼問我們的，從來不是「它會不會取代我」，而是——當它越來越會模擬思考的樣子，我們自己，還在不在思考？
+        海德格爾，1951。七十五年後，AI 讓這句話變得無法迴避。因為我們要面對的，從來不是「AI 會不會取代我」，而是——當它越來越像人的時候，我們自己，還保有思考的能力嗎？
       </footer>
     </blockquote>
     <blockquote class="center" style="margin-top: 2rem">
@@ -2069,8 +2079,8 @@
 
 <footer class="end">
   <div class="wrap">
-    楊翼寧　│　奇美醫院 腎臟科　│　A308B9@chimei.org.tw<br />
-    2026 / 10 奇美醫院教學部師培中心 CFD 課程 · 聽眾帶走版
+    <div>楊翼寧　│　奇美醫院 腎臟科　│　A308B9@chimei.org.tw</div>
+    <div>2026 / 10 奇美醫院教學部師培中心 CFD 課程 · 聽眾帶走版</div>
   </div>
 </footer>
 
