@@ -447,6 +447,11 @@
   p, footer {
     text-wrap: pretty;
   }
+  /* 標題與引言：中文只在標點或空格處換行，真的放不下才硬斷 */
+  blockquote, h2, h3, h4 {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
   /* 只在片語之間換行 */
   .phrase {
     display: inline-block;
@@ -742,6 +747,14 @@
     gap: 1px;
     background: var(--rule);
     border: 1px solid var(--rule);
+  }
+  .tiles.four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  @media (max-width: 40rem) {
+    .tiles.four {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
   .tile {
     background: var(--slab);
@@ -1253,19 +1266,35 @@
       </div>
     </div>
 
-    <h3 style="margin-top: 1.6rem">試辦與價值之間，有一道懸崖</h3>
-    <div class="beads">
-      <span class="bead">一個病房試辦</span
-      ><span class="bead">寫進常規作業</span
-      ><span class="bead">跨科推廣</span
-      ><span class="bead">成為照護標準</span>
+    <h3 style="margin-top: 1.6rem">從 PoC 到 ROI，中間有一道懸崖</h3>
+    <div class="tiles four">
+      <div class="tile">
+        <span class="ord">PoC</span>
+        <h4>概念驗證</h4>
+        <p>小規模測試、驗證可行性、找出問題。</p>
+      </div>
+      <div class="tile">
+        <span class="ord">Production</span>
+        <h4>上線導入</h4>
+        <p>整合系統與資料、建立治理機制、確保安全與穩定。</p>
+      </div>
+      <div class="tile">
+        <span class="ord">Scale</span>
+        <h4>規模擴展</h4>
+        <p>擴大應用範圍、優化成本與效能、培養組織能力。</p>
+      </div>
+      <div class="tile">
+        <span class="ord">ROI</span>
+        <h4>創造價值</h4>
+        <p>提升效率、降低成本與錯誤、持續追蹤成效。</p>
+      </div>
     </div>
     <p class="gloss mark">
-      很多醫院的 AI，停在一個病房、一位熱心主治的手上。計畫結案，人一調走，它就停了。擋住它的很少是模型，多半是 HIS 的介面、跨科的權責，還有上線之後，沒人接手的維護。
+      很多組織卡在 <strong>PoC 走不到 Production</strong>。真正的瓶頸不是模型，而是資料、流程、整合與治理。
     </p>
 
     <blockquote style="margin-top: 1.6rem">
-      模型，決定 AI 能做什麼；資料、流程、系統整合與治理，決定它能不能讓病人更好。
+      <span class="phrase">模型，決定 AI 能做什麼；</span><span class="phrase">資料、流程、系統整合與治理，</span><span class="phrase">決定它能不能讓病人更好。</span>
       <footer>
         所以這張流程圖，不能只交給資訊室來畫。醫師、護理、醫技、藥師、品管、行政，要坐在同一張桌子前，一筆一筆重畫。
       </footer>
